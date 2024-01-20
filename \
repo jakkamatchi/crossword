@@ -1,0 +1,64 @@
+#include "Screen.h"
+#include "CrosswordTable.h"
+#include "ScreenBuffer.h"
+
+#include <iostream>
+
+class Clue;
+
+BoardScreen::BoardScreen(CrosswordTable& cwt) {
+	OriginX = 2;
+	OriginY = 2;
+	
+	BoardWidth = cwt.DisplayWidth;
+	TotalWidth = BoardWidth + 2; 
+	
+	BoardHeight = cwt.DisplayHeight;
+	TotalHeight = BoardHeight + 2;
+
+	Buffer = new ScreenBuffer(BoardWidth, BoardHeight, ' ');
+	ScreenBorder = new Border(TotalWidth, TotalHeight, OriginX, OriginY, '[', '=', ']', '|', ']', '=', '[', '|'); 
+}
+
+BoardScreen::~BoardScreen() {
+	delete Buffer;
+	Buffer = nullptr;
+
+	delete ScreenBorder;
+	ScreenBorder = nullptr;
+}
+
+void BoardScreen::Update(CrosswordTable& cwt) {
+
+}
+
+void BoardScreen::Update(CrosswordTable& cwt, std::vector<Guess >& GuessList) {
+	ScreenBorder->Update();
+	
+	Buffer->Fill();
+	int index;
+
+	for(int i = 0; i < cwt.TotalClues; i++) {
+		index = (cwt.CrosswordClues[i].Y * BoardWidth) + cwt.CrosswordClues[i].X;
+		if(cwt.CrosswordClues[i].IsDown == true) {
+			for(int k = 0; k < cwt.CrosswordClues[i].Length; k++) {	
+				index = ((cwt.CrosswordClues[i].Y + k) * BoardWidth) + cwt.CrosswordClues[i].X;
+				Buffer->DisplayBuffer.seekp(index);
+				Buffer->DisplayBuffer.write("?", 1);
+			}
+		}
+		else {
+			for(int k = 0; k < cwt.CrosswordClues[i].Length; k++) {
+				Buffer->DisplayBuffer.seekp(index);
+				Buffer->DisplayBuffer.write("?", 1);
+				index++;
+			}
+		}		
+	}
+}
+
+void BoardScreen::Refresh() {
+	ScreenBorder->Refresh();
+	Buffer->Print(OriginX + 1, OriginY + 1);	
+}
+
