@@ -6,7 +6,7 @@ Written in C++.
 CWD File: CrossWord Dictionary File
 CWT File: CrossWord Table File
 
-##CWD FILE:
+## CWD FILE:
 Describes a CrossWord Dictionary. Each entry is a separate solution and associated clue. CSV File with following structure:
 [SOLUTION LENGTH],[SOLUTION],[CLUE],
 
