@@ -21,3 +21,13 @@ Describes a CrossWord Table. Split into three sections. CSV File with following 
 
 ### INTERSECTION LIST:
 [FirstClue],[IndexCharFirst],[SecondClueID],[IndexIntersectSecond],
+
+# INSTRUCTIONS
+1 Run './cross' or './a.out'
+2 Type answers in format 'CLUENAME SOLUTION'
+3 Type CWD VERIFY to check solution
+
+# TODO
+
+add clue crossover modifications
+find way to indicate clue names on board (colours ?)
