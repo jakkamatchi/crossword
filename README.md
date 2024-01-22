@@ -14,7 +14,7 @@ CWT FILE:
 Describes a CrossWord Table. Split into three sections. CSV File with following structure.
 
 -HEADER:
-[Width],[Height],
+[Width],[Height],[NumberClues],[NumberAcross],[NumberDown],[NumberIntersections],
 
 -CLUE LIST:
 [ID],[Name],[Length],[XPos],[YPos],
