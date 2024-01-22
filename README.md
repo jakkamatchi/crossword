@@ -2,7 +2,7 @@ Crossword generator. Randomly generates a crossword from a supplied dictionary a
 
 Written in C++.
 
-#FILE FORMATS:
+# FILE FORMATS:
 CWD File: CrossWord Dictionary File
 CWT File: CrossWord Table File
 
@@ -10,14 +10,14 @@ CWT File: CrossWord Table File
 Describes a CrossWord Dictionary. Each entry is a separate solution and associated clue. CSV File with following structure:
 [SOLUTION LENGTH],[SOLUTION],[CLUE],
 
-##CWT FILE:
+## CWT FILE:
 Describes a CrossWord Table. Split into three sections. CSV File with following structure.
 
-###HEADER:
+### HEADER:
 [Width],[Height],[NumberClues],[NumberAcross],[NumberDown],[NumberIntersections],
 
-###CLUE LIST:
+### CLUE LIST:
 [ID],[Name],[Length],[XPos],[YPos],
 
-###INTERSECTION LIST:
+### INTERSECTION LIST:
 [FirstClue],[IndexCharFirst],[SecondClueID],[IndexIntersectSecond],
